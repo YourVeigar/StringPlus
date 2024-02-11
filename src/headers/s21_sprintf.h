@@ -37,7 +37,7 @@ void parser_g(specificators spec, char *str, va_list argument);
 void g_to_str(specificators spec, char *str, long double num);
 void g_two_logic(char *str, long double num);
 void parser_o(specificators spec, char *str, va_list argument);
-void o_to_string(int64_t num, char *str, specificators spec);
+// void o_to_string(int64_t num, char *str, specificators spec);
 void parser_s(specificators spec, char *str, va_list argument);
 void wchar_t_string_to_string(specificators spec, char *str, wchar_t *c);
 void string_to_string(specificators spec, char *str, char *c);
@@ -45,7 +45,7 @@ void parser_u(specificators spec, char *str, va_list argument);
 void uint_to_str(specificators spec, char *str, unsigned long num, int base);
 void to_upper(char *str);
 void parser_x(specificators spec, char *str, va_list argument);
-void x_to_string(int64_t num, char *str, specificators spec);
+// void x_to_string(int64_t num, char *str, specificators spec);
 void p_to_str(void *ptr, char *str, specificators spec);
 void n_to_str(const char *str, const char *str2, va_list argument);
 
