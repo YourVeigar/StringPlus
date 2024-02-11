@@ -728,83 +728,83 @@ START_TEST(s21_sprintf_test46) {
 
 END_TEST
 
-// START_TEST(s21_sprintf_test47) {
-//   double array[] = {0.00000002, 1.12,  1.123,  1.1234,  10.5,  1.,
-//                     -1.,        -1.12, -1.123, -1.1234, -10.5, -10.12345};
-//   const int countTestNums = sizeof(array) / sizeof(array[0]);
-//   const int countFormatStrings = 7;
-//   const char formatStrings[7][50] = {
-//       "Somestring: %+0000000015E", "Somestring: %+15e",
+START_TEST(s21_sprintf_test47) {
+  double array[] = {0.00000002, 1.12,  1.123,  1.1234,  10.5,  1.,
+                    -1.,        -1.12, -1.123, -1.1234, -10.5, -10.12345};
+  const int countTestNums = sizeof(array) / sizeof(array[0]);
+  const int countFormatStrings = 7;
+  const char formatStrings[7][50] = {
+      "Somestring: %+0000000015E", "Somestring: %+15e",
 
-//       "Somestring: %+015e",        "Somestring: %.10e", "Somestring: %000e",
-//       "Somestring: %000.2e",       "Somestring: %0e",
-//   };
-//   for (int i = 0; i < countTestNums; ++i) {
-//     for (int j = 0; j < countFormatStrings; ++j) {
-//       char origDest[1000] = {0};
-//       char testDest[1000] = {0};
-//       sprintf(origDest, formatStrings[j], array[i]);
-//       s21_sprintf(testDest, formatStrings[j], array[i]);
+      "Somestring: %+015e",        "Somestring: %.10e", "Somestring: %000e",
+      "Somestring: %000.2e",       "Somestring: %0e",
+  };
+  for (int i = 0; i < countTestNums; ++i) {
+    for (int j = 0; j < countFormatStrings; ++j) {
+      char origDest[1000] = {0};
+      char testDest[1000] = {0};
+      sprintf(origDest, formatStrings[j], array[i]);
+      s21_sprintf(testDest, formatStrings[j], array[i]);
 
-//       ck_assert_str_eq(origDest, testDest);
-//     }
-//   }
-// }
+      ck_assert_str_eq(origDest, testDest);
+    }
+  }
+}
 
-// END_TEST
+END_TEST
 
-// START_TEST(s21_sprintf_test48) {
-//   double array[] = {2,  12,   123,  1234,  1.001, 1,
-//                     -1, 1000, 1123, 11234, -101,  101245};
-//   int size = sizeof(array) / sizeof(array[0]);
-//   for (int i = 0; i < size; ++i) {
-//     char origDest[1000] = {0};
-//     char testDest[1000] = {0};
-//     char formatString[] = "Somestrings: %g";
-//     sprintf(origDest, formatString, array[i]);
-//     s21_sprintf(testDest, formatString, array[i]);
-//     ck_assert_str_eq(origDest, testDest);
-//   }
-// }
+START_TEST(s21_sprintf_test48) {
+  double array[] = {2,  12,   123,  1234,  1.001, 1,
+                    -1, 1000, 1123, 11234, -101,  101245};
+  int size = sizeof(array) / sizeof(array[0]);
+  for (int i = 0; i < size; ++i) {
+    char origDest[1000] = {0};
+    char testDest[1000] = {0};
+    char formatString[] = "Somestrings: %g";
+    sprintf(origDest, formatString, array[i]);
+    s21_sprintf(testDest, formatString, array[i]);
+    ck_assert_str_eq(origDest, testDest);
+  }
+}
 
-// END_TEST
+END_TEST
 
-// START_TEST(s21_sprintf_test49) {
-//   char origDest[1000] = {0};
-//   char testDest[1000] = {0};
-//   char *formatString = "somestring: %s%n";
+START_TEST(s21_sprintf_test49) {
+  char origDest[1000] = {0};
+  char testDest[1000] = {0};
+  char *formatString = "somestring: %s%n";
 
-//   int origLength = 0;
-//   int testLength = 0;
-//   char *string = "123456789";
+  int origLength = 0;
+  int testLength = 0;
+  char *string = "123456789";
 
-//   sprintf(origDest, formatString, string, &origLength, &origLength);
-//   s21_sprintf(testDest, formatString, string, &testLength);
-//   ck_assert_str_eq(origDest, testDest);
-//   ck_assert_int_eq(origLength, testLength);
-// }
+  sprintf(origDest, formatString, string, &origLength, &origLength);
+  s21_sprintf(testDest, formatString, string, &testLength);
+  ck_assert_str_eq(origDest, testDest);
+  ck_assert_int_eq(origLength, testLength);
+}
 
-// END_TEST
+END_TEST
 
-// START_TEST(s21_sprintf_test50) {
-//   char origDest[1000] = {0};
-//   char testDest[1000] = {0};
-//   char *formatString = "somestring: %s:tring: %s: tring: %s:tring: %s%n";
+START_TEST(s21_sprintf_test50) {
+  char origDest[1000] = {0};
+  char testDest[1000] = {0};
+  char *formatString = "somestring: %s:tring: %s: tring: %s:tring: %s%n";
 
-//   int origLength = 0;
-//   int testLength = 0;
-//   char *string = "123456789";
-//   char *string2 = "String a bit longer";
+  int origLength = 0;
+  int testLength = 0;
+  char *string = "123456789";
+  char *string2 = "String a bit longer";
 
-//   sprintf(origDest, formatString, string, string2, string, string2,
-//           &origLength);
-//   s21_sprintf(testDest, formatString, string, string2, string, string2,
-//               &testLength);
-//   ck_assert_str_eq(origDest, testDest);
-//   ck_assert_int_eq(origLength, testLength);
-// }
+  sprintf(origDest, formatString, string, string2, string, string2,
+          &origLength);
+  s21_sprintf(testDest, formatString, string, string2, string, string2,
+              &testLength);
+  ck_assert_str_eq(origDest, testDest);
+  ck_assert_int_eq(origLength, testLength);
+}
 
-// END_TEST
+END_TEST
 
 START_TEST(s21_sprintf_test51) {
   char origDest[1000] = {0};
@@ -1213,10 +1213,10 @@ sprintf_suite(void) {
   tcase_add_test(tc_core, s21_sprintf_test44);
   tcase_add_test(tc_core, s21_sprintf_test45);
   tcase_add_test(tc_core, s21_sprintf_test46);
-  // tcase_add_test(tc_core, s21_sprintf_test47);
-  // tcase_add_test(tc_core, s21_sprintf_test48);
-  // tcase_add_test(tc_core, s21_sprintf_test49);
-  // tcase_add_test(tc_core, s21_sprintf_test50);
+  tcase_add_test(tc_core, s21_sprintf_test47);
+  tcase_add_test(tc_core, s21_sprintf_test48);
+  tcase_add_test(tc_core, s21_sprintf_test49);
+  tcase_add_test(tc_core, s21_sprintf_test50);
   tcase_add_test(tc_core, s21_sprintf_test51);
   tcase_add_test(tc_core, s21_sprintf_test52);
   tcase_add_test(tc_core, s21_sprintf_test53);

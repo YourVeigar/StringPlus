@@ -15,7 +15,7 @@ TEST_DIR_BUILD	:= tests/build/
 LIB_STATIC      := s21_string.a
 VALGRIND_FLAGS  := --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind.log
 
-FUNC_SRCS       := $(addprefix $(FUNC_DIR), s21_is_delim.c \
+FUNC_SRCS       := $(addprefix $(FUNC_DIR), s21_common.c \
 											s21_memchr.c \
                                             s21_memcmp.c \
                                             s21_memcpy.c \

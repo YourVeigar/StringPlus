@@ -1,13 +1,9 @@
 #pragma once  // Однократное подключение файла
 
-#include <ctype.h>
-#include <locale.h>
+#include <limits.h>
 #include <math.h>
 #include <stdarg.h>
-#include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <wchar.h>
 
 #define S21_NULL ((void *)0)
 
