@@ -8,7 +8,6 @@ int main() {
   case_test(memcpy_suite(), &errcode);
   case_test(memset_suite(), &errcode);
   case_test(sprintf_suite(), &errcode);
-  case_test(sscanf_suite(), &errcode);
   case_test(strchr_suite(), &errcode);
   case_test(strcspn_suite(), &errcode);
   case_test(strerror_suite(), &errcode);
@@ -20,8 +19,6 @@ int main() {
   case_test(strrchr_suite(), &errcode);
   case_test(strstr_suite(), &errcode);
   case_test(strtok_suite(), &errcode);
-  case_test(strtol_suite(), &errcode);
-  case_test(atof_suite(), &errcode);
   case_test(insert_suite(), &errcode);
   case_test(to_lower_suite(), &errcode);
   case_test(to_upper_suite(), &errcode);

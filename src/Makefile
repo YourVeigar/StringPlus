@@ -7,12 +7,7 @@ TEST_FLAGS      := -lcheck -lm -lpthread
 GCOV_FLAGS      := -fprofile-arcs -ftest-coverage
 LIB_STATIC      := s21_string.a
 
-FUNC_SRCS       := $(addprefix $(FUNC_DIR), s21_atof.c \
-                                            s21_strtol.c \
-                                            s21_itoa.c \
-                                            s21_ftoa.c \
-                                            s21_sprintf_aux.c \
-                                            s21_sscanf_aux.c \
+FUNC_SRCS       := $(addprefix $(FUNC_DIR), s21_common.c \
 											s21_memchr.c \
                                             s21_memcmp.c \
                                             s21_memcpy.c \
@@ -29,7 +24,6 @@ FUNC_SRCS       := $(addprefix $(FUNC_DIR), s21_atof.c \
                                             s21_strstr.c \
                                             s21_strtok.c \
                                             s21_sprintf.c \
-                                            s21_sscanf.c \
                                             s21_to_upper.c \
                                             s21_to_lower.c \
                                             s21_insert.c \

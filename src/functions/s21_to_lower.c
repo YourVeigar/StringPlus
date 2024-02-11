@@ -1,41 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "../s21_string.h"
 
-char *s21_to_lower(const char *str) {
-    size_t length = 0;
-    while (str[length]) {
-        length++;
-    }
-
-    char *result = malloc(sizeof(char) * (length + 1));
-    if (result == NULL) {
-        return NULL;
-    }
-
-    for (size_t i = 0; i < length; i++) {
-        if (str[i] >= 'A' && str[i] <= 'Z') {
-            result[i] = str[i] + ('a' - 'A');
-        } else {
-            result[i] = str[i];
-        }
-    }
-
-    result[length] = '\0';
-
-    return result;
+void *s21_to_lower(const char *str) {
+  char *result = S21_NULL;
+  if (str != S21_NULL) {
+    result = calloc(s21_strlen(str) + 1, sizeof(char));
+    s21_strncpy(result, str, s21_strlen(str));
+    int i = 0;
+    for (char *ptr = result; ptr && *ptr; ptr++, i++)
+      if (*ptr >= 'A' && *ptr <= 'Z') result[i] = *ptr + ('a' - 'A');
+  }
+  return (void *)result;
 }
-
-//int main() {
-//    const char *str = "Hello, world!";
-//
-//    char *result = s21_to_lower(str);
-//
-//    if (result != NULL) {
-//        printf("%s", result);
-//        free(result);
-//    } else {
-//        printf("Error");
-//    }
-//
-//    return 0;
-//}

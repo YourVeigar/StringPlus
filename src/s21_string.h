@@ -1,5 +1,9 @@
 #pragma once  // Однократное подключение файла
 
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 #define S21_NULL ((void *)0)
 
 typedef unsigned long int s21_size_t;
@@ -89,3 +93,5 @@ char *s21_itoa(long int, char *, int);
 
 // Преобразует число float или double в строку.
 char *s21_ftoa(long double, char *, int);
+
+int s21_is_delim(char ch, const char *delim);
