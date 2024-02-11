@@ -420,7 +420,7 @@ void e_zero(specificators spec, char *str) {
       s21_memset(str, spec.specifier, count_space);
       str += s21_strlen(str);
     }
-    s21_strncpy(str, str_cpy, BUFFER);
+    s21_strcpy(str, str_cpy);
   } else {
     char str_cpy[BUFFER] = {"0e+00"};
     if (spec.e_spec == 'E') {
@@ -431,7 +431,7 @@ void e_zero(specificators spec, char *str) {
       s21_memset(str, spec.specifier, count_space);
       str += s21_strlen(str);
     }
-    s21_strncpy(str, str_cpy, BUFFER);
+    s21_strcpy(str, str_cpy);
   }
 }
 void parser_f(specificators spec, char *str, va_list argument) {
@@ -568,7 +568,7 @@ void parser_g(specificators spec, char *str, va_list argument) {
   }
   g_to_str(spec, str, num);
   if (spec.e_spec == 'G') {
-    to_upper(str);
+    s21_to_upper(str);
   }
 }
 void g_to_str(specificators spec, char *str, long double num) {
@@ -652,7 +652,7 @@ void wchar_t_string_to_string(specificators spec, char *str, wchar_t *c) {
   int a = s21_strlen(buffer);
   if (spec.minus) {
     wcstombs(str, c, BUFFER);
-    s21_strncpy(str, buffer, BUFFER);
+    s21_strcpy(str, buffer);
     str += a;
     for (int i = a; i < spec.width; i++, str++) {
       *str = spec.specifier;
@@ -662,12 +662,12 @@ void wchar_t_string_to_string(specificators spec, char *str, wchar_t *c) {
       *str = spec.specifier;
     }
     wcstombs(str, c, BUFFER);
-    s21_strncpy(str, buffer, BUFFER);
+    s21_strcpy(str, buffer);
   }
 }
 void string_to_string(specificators spec, char *str, char *c) {
   char buffer[BUFFER];
-  s21_strncpy(buffer, c, BUFFER);
+  s21_strcpy(buffer, c);
   if (spec.accurancy) {
     buffer[spec.accurancy] = '\0';
   }
@@ -677,7 +677,7 @@ void string_to_string(specificators spec, char *str, char *c) {
   }
   if (spec.minus) {
     if (spec.accurancy != -2) {
-      s21_strncpy(str, buffer, BUFFER);
+      s21_strcpy(str, buffer);
     }
     str += a;
     for (int i = a; i < spec.width; i++, str++) {
@@ -688,7 +688,7 @@ void string_to_string(specificators spec, char *str, char *c) {
       *str = spec.specifier;
     }
     if (spec.accurancy >= 0) {
-      s21_strncpy(str, buffer, BUFFER);
+      s21_strcpy(str, buffer);
     }
   }
 }
@@ -746,17 +746,10 @@ void parser_x(specificators spec, char *str, va_list argument) {
   }
   uint_to_str(spec, str, num, 16);
   if (spec.e_spec == 'X') {
-    to_upper(str);
+    s21_to_upper(str);
   }
 }
-void to_upper(char *str) {
-  while (*str) {
-    if (*str >= 'a' && *str <= 'z') {
-      *str = *str - 'a' + 'A';
-    }
-    str++;
-  }
-}
+
 void p_to_str(void *ptr, char *str, specificators spec) {
   uintptr_t num = (uintptr_t)ptr;
   char buffer[1024];

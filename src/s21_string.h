@@ -41,6 +41,8 @@ int s21_strncmp(const char *, const char *, s21_size_t);
 // Копирует до n символов из строки, на которую указывает src, в dest.
 char *s21_strncpy(char *, const char *, s21_size_t);
 
+char *s21_strcpy(char *, const char *);
+
 // Вычисляет длину начального сегмента str1, который полностью состоит из
 // символов, не входящих в str2
 s21_size_t s21_strcspn(const char *, const char *);

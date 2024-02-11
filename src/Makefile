@@ -18,6 +18,7 @@ FUNC_SRCS       := $(addprefix $(FUNC_DIR), s21_common.c \
                                             s21_strlen.c \
                                             s21_strncat.c \
                                             s21_strncmp.c \
+											s21_strcpy.c \
                                             s21_strncpy.c \
                                             s21_strpbrk.c \
                                             s21_strrchr.c \
